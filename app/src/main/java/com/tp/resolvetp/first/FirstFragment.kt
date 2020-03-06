@@ -5,12 +5,16 @@ import android.util.Log
 import com.tp.resolvetp.BaseFragment
 import com.tp.resolvetp.R
 import toothpick.config.Module
+import toothpick.ktp.binding.bind
+import toothpick.ktp.binding.module
 import toothpick.ktp.delegate.inject
 
 class FirstFragment : BaseFragment() {
 
     override val layoutRes: Int = R.layout.fragment_first
-    override val modules: Array<Module> = emptyArray()
+    override val modules: Array<Module> = arrayOf(module {
+        bind<FirstFragment>().toInstance(this@FirstFragment)
+    })
 
     //v1
     private val firstFeature: FirstFeature by inject()
